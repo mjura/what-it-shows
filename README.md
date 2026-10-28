@@ -1,15 +1,36 @@
-# what-it-shows
+# kb — the support knowledge base
 
-Support ticket #4471 merged 412 date reports as one known issue. Read by cause, they are three problems. Counts follow the desk's own view: by cause, parser 379 + hint 33 = 412; the 5 one-day reports are filed under the parser by tenant and also have their own issue.
+**kb** = knowledge base. What the support desk knows about how our products break, written
+down where the code can keep it honest.
 
-| Issue | Problem | Reports | State |
-|---|---|---|---|
-| [#1](https://github.com/mjura/what-it-shows/issues/1) | Shared date parser reads day-first dates month first | 379 | fixed, closed |
-| [#2](https://github.com/mjura/what-it-shows/issues/2) | booking-v3 form hint says MM/DD/YYYY but the form reads the date day first | 33 | won't fix (form retired), closed |
-| [#3](https://github.com/mjura/what-it-shows/issues/3) | Bookings move by one day, not month/day swap (time zone) | 5 | open |
+One desk takes reports for every product we run: `sched-prod` (calendar invites for about
+300k people) and the rest. When something
+goes wrong, the reports reach the desk first. This kb is how the desk triages them, what each
+incident turned out to be, and why we decided what we decided.
 
-## The kb page
+## What's here
 
-- `src/routes/kb/incidents/4471-split/+page.svx`: the page, signed `mjura`, at its place in the support kb.
-- `src/lib/kb/SplitTable.svelte`: the component that computes the split from `reports-4471.json` and `desk-notes.json`.
-- `rendered/4471-split.html`: the page as the desk sees it, built with SvelteKit and mdsvex from the kb export (desk ref `DR-CD8Q-6C5C`).
+```
+src/routes/kb/      the pages (.svx: Markdown with components)
+  triage/           how the desk handles incoming reports
+  incidents/        one page per big ticket
+  decisions/        numbered decision records
+src/lib/kb/         components and the logic they run
+src/lib/layouts/    the frame every page shares
+src/lib/data/       exports from the ticket system
+```
+
+## Conventions
+
+- Words in the page, logic in `src/lib` (imported as `#lib/…`). A number that can be computed belongs in a component.
+- Every page starts with frontmatter: `title`, `owner`, `status`, `reviewed`.
+- A decision is never edited after it is accepted. A new record replaces it.
+- A page you add is signed: its frontmatter carries your `signature` and it ends with `<RenderStamp {signature} />`, so the desk knows who wrote it.
+
+## Owners
+
+Support desk. Decision records: whoever signed them.
+
+---
+
+Exported 2026-10-04 from the `support` repo, `apps/kb/` → `src/`.
