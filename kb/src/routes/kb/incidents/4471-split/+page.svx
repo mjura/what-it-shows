@@ -34,11 +34,14 @@ describe three different bugs. Each now has its own ticket with the number of re
   the parser does not fix it.
 - **`one-day`**: the date moves by one day, not a swap. One meeting showed as Tuesday in Lisbon and
   Monday in Toronto: a time zone bug. The desk had already read these as a one-day move
-  (`desk-notes.json`) but filed them under the parser by tenant.
+  (`desk-notes.json`). They stay counted under the parser by tenant, as the desk counts, and have
+  their own ticket too.
 
 ## How it was counted
 
 - The export pages overlap, so the same report can appear twice. Counted once by id.
+- Counted the desk's way: every report under the cause its tenant gives it, so the causes add up
+  to all reports merged into #4471.
 - Cause comes from the tenant, its locale and its booking form (`causes.ts`), not from intake's tag.
   The tag is a guess from the reporter's browser, and it often disagrees with the tenant.
 - Every body with two dates was checked: the `parser` and `hint` reports swap day and month; none
