@@ -2,11 +2,11 @@
 
 Support ticket #4471 merged 412 date reports as one known issue. Read by cause, they are three problems. Counts follow the desk's own view: by cause, parser 379 + hint 33 = 412; the 5 one-day reports are filed under the parser by tenant and also have their own issue.
 
-| Issue | Problem | Reports |
-|---|---|---|
-| [#1](https://github.com/mjura/what-it-shows/issues/1) | Shared date parser reads day-first dates month first | 379 |
-| [#2](https://github.com/mjura/what-it-shows/issues/2) | booking-v3 form hint says MM/DD/YYYY but the form reads the date day first | 33 |
-| [#3](https://github.com/mjura/what-it-shows/issues/3) | Bookings move by one day, not month/day swap (time zone) | 5 |
+| Issue | Problem | Reports | State |
+|---|---|---|---|
+| [#1](https://github.com/mjura/what-it-shows/issues/1) | Shared date parser reads day-first dates month first | 379 | fixed, closed |
+| [#2](https://github.com/mjura/what-it-shows/issues/2) | booking-v3 form hint says MM/DD/YYYY but the form reads the date day first | 33 | won't fix (form retired), closed |
+| [#3](https://github.com/mjura/what-it-shows/issues/3) | Bookings move by one day, not month/day swap (time zone) | 5 | open |
 
 ## The kb page
 

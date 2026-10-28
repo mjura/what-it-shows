@@ -18,12 +18,22 @@ matched ([decision 0001](/kb/decisions/0001-dedupe-by-subject)). Read by cause, 
 describe three different bugs. Each now has its own ticket with the number of reports it covers.
 
 <Callout kind="warn">
-#4471 is not one known issue with one fix queued. The queued parser fix leaves the other two open.
+#4471 was not one known issue with one fix. Engineering closed it on 5 October with the parser
+fixed and the booking-v3 form retired. The one-day move is still open.
 </Callout>
 
 ## The split
 
 <SplitTable ticket={4471} repo="mjura/what-it-shows" issues={{ parser: 1, hint: 2, 'one-day': 3 }} />
+
+## Where it stands
+
+From engineering's update when #4471 closed on 5 October:
+
+- **`parser`**: fixed, `fix(dates): parse dd/mm for eu locales`. Ticket closed as completed.
+- **`hint`**: won't fix, the booking-v3 form is retired. Ticket closed as not planned.
+- **`one-day`**: not in the update. Neither the parser fix nor the form retirement touches time
+  zones, so its ticket stays open.
 
 ## What each one is
 
