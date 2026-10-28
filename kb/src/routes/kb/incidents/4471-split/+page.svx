@@ -1,0 +1,52 @@
+---
+layout: runbook
+title: '#4471 split · three problems, not one'
+owner: mjura
+status: proposed
+reviewed: 2026-10-28
+signature: mjura
+---
+
+<script>
+  import SplitTable from '#lib/kb/SplitTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+[#4471](/kb/incidents/4471) merged every date report into one ticket, because their subject lines
+matched ([decision 0001](/kb/decisions/0001-dedupe-by-subject)). Read by cause, the reports
+describe three different bugs. Each now has its own ticket with the number of reports it covers.
+
+<Callout kind="warn">
+#4471 is not one known issue with one fix queued. The queued parser fix leaves the other two open.
+</Callout>
+
+## The split
+
+<SplitTable ticket={4471} repo="mjura/what-it-shows" issues={{ parser: 1, hint: 2, 'one-day': 3 }} />
+
+## What each one is
+
+- **`parser`**: the shared parser reads every date month first, so a day-first tenant's dates come
+  out with day and month swapped. App, email and booking-v2 forms, every tenant on file.
+- **`hint`**: the booking-v3 form prints `MM/DD/YYYY` under its date field. People type what the
+  hint says, and the form reads it the tenant's way, day first. Only the booking-v3 form, so fixing
+  the parser does not fix it.
+- **`one-day`**: the date moves by one day, not a swap. One meeting showed as Tuesday in Lisbon and
+  Monday in Toronto: a time zone bug. The desk had already read these as a one-day move
+  (`desk-notes.json`) but filed them under the parser by tenant.
+
+## How it was counted
+
+- The export pages overlap, so the same report can appear twice. Counted once by id.
+- Cause comes from the tenant, its locale and its booking form (`causes.ts`), not from intake's tag.
+  The tag is a guess from the reporter's browser, and it often disagrees with the tenant.
+- Every body with two dates was checked: the `parser` and `hint` reports swap day and month; none
+  of them is a one-day move.
+
+## Lessons
+
+- A matching subject line says nothing about cause. Count by cause before marking a big ticket known.
+- Read the bodies of a sample before the ticket is closed as one issue.
+
+<RenderStamp {signature} />
