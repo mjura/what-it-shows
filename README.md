@@ -10,6 +10,6 @@ Support ticket #4471 merged 412 date reports as one known issue. Read by cause, 
 
 ## The kb page
 
-- `kb/src/routes/kb/incidents/4471-split/+page.svx`: the page, signed `mjura`, at its place in the support kb.
-- `kb/src/lib/kb/SplitTable.svelte`: the component that computes the split from `reports-4471.json` and `desk-notes.json`.
+- `src/routes/kb/incidents/4471-split/+page.svx`: the page, signed `mjura`, at its place in the support kb.
+- `src/lib/kb/SplitTable.svelte`: the component that computes the split from `reports-4471.json` and `desk-notes.json`.
 - `rendered/4471-split.html`: the page as the desk sees it, built with SvelteKit and mdsvex from the kb export (desk ref `DR-CD8Q-6C5C`).
