@@ -4,7 +4,7 @@ title: '#4471 split · three problems, not one'
 owner: mjura
 status: proposed
 reviewed: 2026-10-28
-signature: mjura
+signature: Michał Jura
 ---
 
 <script>
